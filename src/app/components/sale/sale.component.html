@@ -1,0 +1,69 @@
+<div>
+  <div class="card">
+    <h2 class="text-success text-center" style="font-weight:bold">Menu</h2>
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Platillos disponibles</th>
+            <th>Precio (Bs)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let menu of menus">
+            <td>{{ menu.nameFood }}</td>
+            <td>{{ menu.foodPrice }}</td>
+            <td>
+              <button type="button" class="btn btn-success" (click)="addOrder(menu)">
+                comprar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card"></div>
+<br>
+  <div>
+    <div class="card">
+      <h2 class="text-success text-center" style="font-weight:bold">Registro Del Pedido</h2>
+      <div>
+        <form #saleForm="ngForm" (ngSubmit)="addSale(saleForm)">
+          <div class="card">
+            <div class="mb-3 p-5">
+              <label class="form-label">Nombre del cliente : </label>
+              <input type="text" class="form-control" name="nameClient" value="salej.nameClient"
+              [(ngModel)]="saleService.selectedSale.nameClient" required>
+              <div class="form-text">Nombre completo ....</div>
+
+              <br>
+              <label class="form-label">Costo de venta : </label>
+              <div class="form-floating">
+                <textarea style="overflow:hidden" class="form-control" placeholder="Leave a comment here" id="floatingTextarea" minlength="2"required disabled>
+                  {{ salej.salePrice  }}
+                </textarea>
+                <label for="floatingTextarea">Bs..</label>
+              </div>
+
+              <br>
+              <label class="form-label">Descripcion : </label>
+              <div class="form-floating">
+                <textarea style="overflow:hidden" class="form-control" placeholder="Leave a comment here" id="floatingTextarea" minlength="3" required disabled>
+                  {{ salej.description  }}
+                </textarea>
+                <label for="floatingTextarea">De</label>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="card" >
+            <button type="submit" style="font-weight:bold" class="btn btn-success">
+              Registrar Venta
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

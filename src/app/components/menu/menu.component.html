@@ -1,0 +1,45 @@
+<div class="row" >
+  <div class="col-md-3">    
+    <div class="card">
+      <h3 class="text-success text-center" >Menu Del Dia</h3>
+      <div class="card-body">
+        <form #menuForm="ngForm" (ngSubmit)="addMenu(menuForm)">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Nombre del plato" name="nameFood"
+              [(ngModel)]="menuService.selectedMenu.nameFood" />
+          </div>
+          <br>
+          <div class="form-group">
+            <input type="number" class="form-control" placeholder="precio" name="foodPrice" [(ngModel)]="menuService.selectedMenu.foodPrice" />
+          </div>
+          <br>
+          <button>
+            Guardar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-7">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Precio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let menu of menus">
+          <td>{{ menu.nameFood }}</td>
+          <td>{{ menu.foodPrice }}</td>
+          <td>
+            <button class="btn btn-danger" (click)="deleteMenu(menu)">
+              Borrar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
